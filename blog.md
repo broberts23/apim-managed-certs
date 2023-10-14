@@ -71,6 +71,6 @@ If you're like me, this question you're asking yourself is "How do I renew the c
 
 ## Conclusion
 
-In this post I showed you how to create a managed SSL certificates in Azure API Management. I also showed you how to automate the process using bicep, GitHub Actions and Azure CLI. I hope you found this post useful, I had a lot of fun creating it. 🙌 
+In this post I showed you how to create a managed SSL certificates in Azure API Management. I also showed you how to automate the process using bicep, GitHub Actions and Azure CLI. I hope you found this post useful, I had a lot of fun creating it. 🙌
 
-If you want to read more about APIM custom domains and certificate you can find the documentation [here](https://learn.microsoft.com/en-gb/azure/api-management/configure-custom-domain?tabs=managed).
+If you want to read more about APIM custom domains and certificate you can find the documentation [here](https://learn.microsoft.com/en-gb/azure/api-management/configure-custom-domain?tabs=managed)
