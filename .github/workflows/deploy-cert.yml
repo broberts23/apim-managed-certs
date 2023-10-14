@@ -1,0 +1,45 @@
+on:
+    workflow_dispatch:
+        inputs: 
+            apim-name: 
+                type: string
+                description: 'Name of the APIM instance'
+                required: true
+            resource-group:
+                type: string
+                description: 'Name of the resource group'
+                required: true
+            host-name:
+                type: string
+                description: 'Name of the APIM Gateway host'
+                required: true
+  
+permissions:
+    id-token: write
+    contents: read
+
+jobs:
+    bicep-whatif:
+      name: 'Bicep What-If'
+      runs-on: ubuntu-latest
+      steps:
+        - name: Checkout code
+          uses: actions/checkout@v3
+  
+        - name: 'Az CLI login'
+          uses: azure/login@v1
+          with:
+            client-id: ${{ secrets.AZURE_CLIENT_ID }}
+            tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+            subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+        # Apply the mananaged certificate
+        - name: Update APIM Configuration
+          uses: Azure/cli@v1
+          with:
+            inlineScript: |
+                az apim update --name ${{ inputs.apim-name }}`
+                    --resource-group ${{ inputs.resource-group }}`
+                    --set hostnameConfigurations='[{\"hostName\":\"${{ inputs.host-name }}\",\"type\":\"Proxy\",\"certificateSource\":\"Managed\"}]'"
+
+  
