@@ -6,7 +6,7 @@ permissions:
     contents: read
 
 env:
-  resource-group: 'myApimDemo'
+  resource-group: 'E'
 
 jobs:
     bicep-whatif:
